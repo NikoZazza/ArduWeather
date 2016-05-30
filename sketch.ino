@@ -1,5 +1,5 @@
 #include <SPI.h>
-//#include <EthernetV2_0.h>
+#include <EthernetV2_0.h>
 //Variabili per la scheda ethernet ws5200
 #define SS    10 
 #define nRST  8  
@@ -11,13 +11,10 @@
 
 byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xEE, 0xEE};
 IPAddress ip(10,0 ,1, 99); //ip della nostra scheda di rete
-//char server[] = "http://xionbig.altervista.org";
-//IPAddress server(194,184,158,194); //ip del server in cui verranno spediti i valori
-IPAddress server(10,0,1,36);
+IPAddress server(10,0,1,36); //ip del server in cui verranno spediti i valori
 EthernetClient client;
 
 int myKey = 1; //la chiave con cui identifichiamo il sensore
-
 float temperatura = 0.0; //variabile della temperatura corrente
 int ciclo = 0; //per prelevare un secondo valore dal sensore, dobbiamo aspettare almeno 1sec
 float minRange = -127.0; //valore minimo in cui l'allarme si deve attivare
