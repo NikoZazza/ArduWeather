@@ -55,10 +55,9 @@ void loop() {
         var += "&temperatura=";
         var += (float)temperatura;
         var +=" HTTP/1.1";
-        Serial.println(var);
+        //Serial.println(var);
         client.println(var);
         client.println("Host: localhost");
-        client.println("User-Agent: arduino-ethernet");
         client.println("Connection: close");
         client.println();        
         
@@ -70,13 +69,9 @@ void loop() {
             return;
           }
         }
-        String line;
-        String lastLine;
         String value;
         while(client.available()){
-            value = lastLine;
-            lastLine = line;
-            line = client.readStringUntil('\n');
+            value = client.readStringUntil('\n');
         }
         char * test;
         char test1[50];
